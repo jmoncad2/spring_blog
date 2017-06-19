@@ -32,16 +32,4 @@ public class MathController {
     public String divideNumber(@PathVariable int number, @PathVariable int secondNumber) {
         return number + " divide by " + secondNumber + " equals = " + (number / secondNumber);
     }
-
-    @RequestMapping(path = "/posts{post}", method = RequestMethod.GET)
-    @ResponseBody
-    public String posts(@PathVariable String post) {
-        return post.replaceAll("", "posts index page");
-    }
-
-    @RequestMapping(path = "/posts/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public String postsId(@PathVariable int id) {
-        return "Individual post id is " + id;
-    }
 }
