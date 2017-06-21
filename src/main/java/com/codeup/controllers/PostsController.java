@@ -20,34 +20,36 @@ public class PostsController {
         this.postDao = postDao;
     }
 
-    @GetMapping("posts")
+    @GetMapping("/posts")
     public String viewAll(Model model) {
         List<Post> posts = postDao.findAll();
         model.addAttribute("posts", posts);
         return "posts/index";
     }
 
-    @GetMapping("posts/{id}")
+    @GetMapping("/posts/{id}")
     public String viewIndividualPost(@PathVariable long id, Model model) {
         Post post = postDao.findOne(id);
         model.addAttribute("post", post);
         return "posts/show";
     }
 
-    @GetMapping("posts/create")
+    @GetMapping("/posts/create")
     public String showPostForm(Model model) {
         model.addAttribute("post", new Post());
         return "posts/create";
     }
 
-    @PostMapping("posts/create")
+    @PostMapping("/posts/create")
     public String savePost(@ModelAttribute Post post) {
-        System.out.println(post.getTitle());
-        return "posts/create";
+        postDao.save(post);
+        return "redirect:/posts";
     }
 
-    @PostMapping("posts/{id}/edit")
-    public String editPost() {
-
+    @GetMapping("/posts/{id}/edit")
+    public String editPost(@PathVariable int id, Model model) {
+        Post post = postDao.findOne(id);
+        model.addAttribute("post", post);
+        return "posts/edit";
     }
 }
