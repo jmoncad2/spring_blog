@@ -16,6 +16,9 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
+    @OneToOne
+    private Post owner;
+
     public Post() {
     }
 
