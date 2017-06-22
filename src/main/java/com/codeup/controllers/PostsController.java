@@ -44,9 +44,22 @@ public class PostsController {
     }
 
     @GetMapping("/posts/{id}/edit")
-    public String editPost(@PathVariable int id, Model model) {
+    public String editPost(@PathVariable Long id, Model model) {
         Post post = postDao.findOne(id);
         model.addAttribute("post", post);
         return "posts/edit";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String editPostF(@ModelAttribute Post post) {
+        postDao.save(post);
+        return "redirect/posts/" + post.getId();
+    }
+
+    @PostMapping("/post/i{id}/delete")
+    public String deletePosts(@ModelAttribute Post post, Model model) {
+        postDao.deletePost(post.getId());
+        model.addAttribute("msg", "your post was deleted correctly");
+        return "return view";
     }
 }
