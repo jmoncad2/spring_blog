@@ -8,9 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class PostsController {
     private final PostSvc postDao;
@@ -22,7 +19,7 @@ public class PostsController {
 
     @GetMapping("/posts")
     public String viewAll(Model model) {
-        List<Post> posts = postDao.findAll();
+        Iterable<Post> posts = postDao.findAll();
         model.addAttribute("posts", posts);
         return "posts/index";
     }

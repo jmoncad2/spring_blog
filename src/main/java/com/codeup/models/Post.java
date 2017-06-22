@@ -1,11 +1,20 @@
 package com.codeup.models;
 
 
-public class Post {
-    private String title;
-    private String body;
-    private int id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "posts")
+public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, length = 100)
+    private String title;
+
+    @Column(nullable = false)
+    private String body;
 
     public Post() {
     }
@@ -15,11 +24,11 @@ public class Post {
         this.body = body;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
