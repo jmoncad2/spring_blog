@@ -2,6 +2,8 @@ package com.codeup.controllers;
 
 
 import com.codeup.models.Post;
+import com.codeup.models.User;
+import com.codeup.repositories.UsersRepository;
 import com.codeup.svcs.PostSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PostsController {
     private final PostSvc postDao;
+    private final UsersRepository usersDao;
 
     @Autowired
-    public PostsController(PostSvc postDao){
+    public PostsController(PostSvc postDao, UsersRepository usersDao){
+        this.usersDao = usersDao;
         this.postDao = postDao;
     }
 
@@ -39,6 +43,8 @@ public class PostsController {
 
     @PostMapping("/posts/create")
     public String savePost(@ModelAttribute Post post) {
+        User owner = usersDao.findOne(1L);
+        post.setOwner(owner);
         postDao.save(post);
         return "redirect:/posts";
     }
@@ -53,7 +59,7 @@ public class PostsController {
     @PostMapping("/posts/{id}/edit")
     public String editPostF(@ModelAttribute Post post) {
         postDao.save(post);
-        return "redirect/posts/" + post.getId();
+        return "redirect:/posts/" + post.getId();
     }
 
     @PostMapping("/post/i{id}/delete")

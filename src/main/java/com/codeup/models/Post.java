@@ -17,7 +17,7 @@ public class Post {
     private String body;
 
     @OneToOne
-    private Post owner;
+    private User owner;
 
     public Post() {
     }
@@ -49,5 +49,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }
