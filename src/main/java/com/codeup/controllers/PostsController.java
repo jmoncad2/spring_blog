@@ -42,10 +42,15 @@ public class PostsController {
     }
 
     @PostMapping("/posts/create")
-    public String savePost(@ModelAttribute Post post) {
-        User owner = usersDao.findOne(1L);
-        post.setOwner(owner);
-        postDao.save(post);
+    public String savePost
+            (@RequestParam(name = "title") String title,
+             @RequestParam(name = "body") String body,
+             Model model) {
+        Post post = new Post();
+        post.setTitle(title);
+        post.setBody(body);
+
+        model.addAttribute("post", post);
         return "redirect:/posts";
     }
 
