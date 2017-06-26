@@ -1,6 +1,7 @@
 package com.codeup.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user_roles")
@@ -37,5 +38,9 @@ public class UserRole {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<String> ofUserWith(String username) {
+        return null;
     }
 }

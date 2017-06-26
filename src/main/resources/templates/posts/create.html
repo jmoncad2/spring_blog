@@ -6,13 +6,13 @@
 </head>
 <body>
 <form action="/posts/create" method="post" th:object="${post}">
-    Title:
-    <input th:field="*{title}" />
+    <label for="title">Title:</label>
+    <input th:field="*{title}" name="title" id="title" />
     <br />
-    Description:
-    <input th:field="*{body}" />
+    <label for="body">Description:</label>
+    <input th:field="*{body}" name="body" id="body" />
     <br />
-    <input type="submit" />
+    <input type="submit" value="Publish" />
 </form>
 </body>
 </html>
