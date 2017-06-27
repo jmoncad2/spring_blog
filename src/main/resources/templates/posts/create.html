@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8" />
     <title>Create Post</title>
 </head>
 <body>
-<form action="/posts/create" method="post" th:object="${post}">
+<form th:action="@{/posts/create}" th:method="post" th:object="${post}">
     <label for="title">Title:</label>
     <input th:field="*{title}" name="title" id="title" />
-    <br />
+    <br/>
     <label for="body">Description:</label>
     <input th:field="*{body}" name="body" id="body" />
-    <br />
+    <br/>
+    Username: <span sec:authentication="name"></span>
+    <br/>
     <input type="submit" value="Publish" />
 </form>
 </body>
