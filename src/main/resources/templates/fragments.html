@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
 
-                <li sec:authorize="isAuthenticated()"><a href="#" class="btn-link btn">Welcome, <span sec:authentication="name">Bob</span></a></li>
+                <li sec:authorize="isAuthenticated()"><a href="#" class="btn-link btn">Welcome, <span sec:authentication="name"></span></a></li>
                 <li><a href="/posts">View the Posts</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/posts/create">Create post</a></li>
                 <li sec:authorize="isAuthenticated()">
@@ -33,6 +33,17 @@
 
     </div><!-- /.container-fluid -->
 </nav>
+<div th:fragment="form-posts">
+    <div th:each="post : ${posts}">
+        <h2>Title: <span th:text="${post.title}"></span></h2>
+        <h2>Body: <span th:text="${post.body}"></span></h2>
+        <li sec:authorize="isAuthenticated()"><a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit post</a></li>
+        <li sec:authorize="isAuthenticated()">
+        <li sec:authorize="isAuthenticated()"><a th:href="@{'/posts/' + ${post.id} + '/delete'}">Edit post</a></li>
+        <li sec:authorize="isAuthenticated()">
+    </div>
+</div>
+
 <div th:fragment="scripts">
     <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
