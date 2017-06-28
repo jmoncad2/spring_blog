@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Log In</title>
-</head>
+<head th:replace="fragments :: head('Mamajama Login')" />
 <body>
+<nav th:replace="fragments :: my-navbar" />
 <h1>Log In</h1>
 
 <form th:action="@{/login}" method="post">

@@ -1,11 +1,9 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:replace="fragments :: head('Blog Index')" />
+<head th:replace="fragments :: head('Mamajama Index')" />
 <body>
 <nav th:replace="fragments :: my-navbar" />
 <h1>Posts Index Page</h1>
-<br/>
-<a th:href="@{'/posts/create'}">Create A Post</a>
 <h2>Listing of all the posts</h2>
 <div th:each="post : ${posts}">
     <h2>Title: <span th:text="${post.title}"></span></h2>

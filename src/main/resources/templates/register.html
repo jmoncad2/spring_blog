@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Register</title>
-</head>
+<head th:replace="fragments :: head('Mamajama Register')" />
 <body>
+<nav th:replace="fragments :: my-navbar" />
 <h1>Register</h1>
 <form th:action="@{/register}" th:method="post" th:object="${user}">
     <label for="username">Username</label>

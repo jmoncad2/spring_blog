@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
-    <meta charset="UTF-8" />
-    <title>Edit Post</title>
-</head>
+<head th:replace="fragments :: head('Mamajama Edit')" />
 <body>
+<nav th:replace="fragments :: my-navbar" />
 <form th:action="${'/posts/' + post.id + '/edit'}" th:method="post" th:object="${post}">
     Title:
     <input th:field="*{title}" />
