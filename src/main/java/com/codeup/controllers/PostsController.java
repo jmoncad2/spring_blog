@@ -66,14 +66,16 @@ public class PostsController {
 
     @PostMapping("/posts/{id}/edit")
     public String editPostF(@ModelAttribute Post post) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setOwner(user);
         postDao.save(post);
-        return "redirect:/posts/" + post.getId();
+        return "redirect:/posts";
     }
 
-    @PostMapping("/post/i{id}/delete")
+    @PostMapping("/post/{id}/delete")
     public String deletePosts(@ModelAttribute Post post, Model model) {
         postDao.deletePost(post.getId());
         model.addAttribute("msg", "your post was deleted correctly");
-        return "return view";
+        return "redirect:/posts";
     }
 }

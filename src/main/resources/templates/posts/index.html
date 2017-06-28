@@ -1,15 +1,9 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title></title>
-</head>
+<head th:replace="fragments :: head('Blog Index')" />
 <body>
+<nav th:replace="fragments :: my-navbar" />
 <h1>Posts Index Page</h1>
-Logged User: <span sec:authentication="name"></span>
-<br/>
-Roles: <span sec:authentication="principal.authorities"></span>
 <br/>
 <a th:href="@{'/posts/create'}">Create A Post</a>
 <h2>Listing of all the posts</h2>
@@ -17,6 +11,7 @@ Roles: <span sec:authentication="principal.authorities"></span>
     <h2>Title: <span th:text="${post.title}"></span></h2>
     <h2>Body: <span th:text="${post.body}"></span></h2>
     <a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit</a>
+    <a th:href="@{'/posts/' + ${post.id} + '/delete'}">Delete</a>
 </div>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <title>Edit Post</title>
 </head>
 <body>
-<form th:action="${'/posts/' + post.id + '/edit'}" method="post" th:object="${post}">
+<form th:action="${'/posts/' + post.id + '/edit'}" th:method="post" th:object="${post}">
     Title:
     <input th:field="*{title}" />
     <br />
