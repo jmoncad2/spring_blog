@@ -5,6 +5,11 @@
 <nav th:replace="fragments :: my-navbar" />
 <h1>Posts Index Page</h1>
 <h2>Listing of all the posts</h2>
-<div th:replace="fragments :: form-posts" />
+<div th:each="post : ${posts}">
+    <h2>Title: <span th:text="${post.title}"></span></h2>
+    <h2>Body: <span th:text="${post.body}"></span></h2>
+    <li sec:authorize="isAuthenticated()"><a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit post</a></li>
+    <li sec:authorize="isAuthenticated()"><a th:href="@{'/posts/' + ${post.id} + '/delete'}">Edit post</a></li>
+</div>
 </body>
 </html>
