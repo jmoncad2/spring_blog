@@ -11,8 +11,8 @@
     <li sec:authorize="isAuthenticated()"><a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit post</a></li>
     <br />
     <li sec:authorize="isAuthenticated()">
-        <form th:action="@{'/posts/delete'}">
-            <input type="hidden" value="${post.id}" name="id" />
+        <form th:action="@{'/posts/delete'}" th:method="post">
+            <input type="hidden" th:value="${post.id}" name="id" />
             <button>Delete post</button>
         </form>
     </li>
