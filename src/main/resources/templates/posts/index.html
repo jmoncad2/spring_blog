@@ -10,7 +10,12 @@
     <h2>Body: <span th:text="${post.body}"></span></h2>
     <li sec:authorize="isAuthenticated()"><a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit post</a></li>
     <br />
-    <li sec:authorize="isAuthenticated()"><a th:href="@{'/posts/' + ${post.id} + '/delete'}">Delete post</a></li>
+    <li sec:authorize="isAuthenticated()">
+        <form th:action="@{'/posts/delete'}">
+            <input type="hidden" value="${post.id}" name="id" />
+            <button>Delete post</button>
+        </form>
+    </li>
 </div>
 </body>
 </html>
