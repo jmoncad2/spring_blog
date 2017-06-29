@@ -74,6 +74,8 @@ public class PostsController {
 
     @PostMapping("/post/{id}/delete")
     public String deletePosts(@ModelAttribute Post post, Model model) {
+        String title = post.getTitle();
+        long id = post.getId();
         postDao.deletePost(post.getId());
         model.addAttribute("msg", "your post was deleted correctly");
         return "redirect:/posts";
